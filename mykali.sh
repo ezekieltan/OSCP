@@ -26,6 +26,7 @@ wget https://github.com/Flangvik/SharpCollection/raw/master/NetFramework_4.5_x64
 wget https://github.com/Flangvik/SharpCollection/raw/master/NetFramework_4.0_x64/Seatbelt.exe -O seatbelt4.0.exe
 wget https://github.com/DominicBreuker/pspy/releases/download/v1.2.1/pspy64
 wget https://nmap.org/dist/nmap-7.92-win32.zip -O nmap.zip
+wget https://raw.githubusercontent.com/ezekieltan/OSCP/main/power64.ps1
 sudo gzip -d /usr/share/wordlists/rockyou.txt.gz
 cp /usr/share/windows-resources/binaries/nc.exe .
 cp /usr/share/windows-resources/mimikatz/x64/mimikatz.exe .
