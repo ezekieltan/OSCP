@@ -69,6 +69,9 @@ Password cracking/brute forcing
 hydra -l username -P /usr/share/wordlists/rockyou.txt -s 22 ssh://192.168.
 hashcat -a 0 -m 13400 kdb.txt /usr/share/wordlists/rockyou.txt
 
+SNMP
+snmpwalk -v2c -c public 192.168.233.157 NET-SNMP-EXTEND-MIB::nsExtendObjects
+
 Upgrading shell
 python -c 'import pty; pty.spawn("/bin/bash")'
 python3 -c 'import pty; pty.spawn("/bin/bash")'
