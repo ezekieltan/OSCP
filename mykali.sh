@@ -28,6 +28,7 @@ wget https://github.com/DominicBreuker/pspy/releases/download/v1.2.1/pspy64
 wget https://nmap.org/dist/nmap-7.92-win32.zip -O nmap.zip
 wget https://raw.githubusercontent.com/ezekieltan/OSCP/main/power64.ps1
 wget https://github.com/antonioCoco/RoguePotato/releases/download/1.0/RoguePotato.zip
+wget https://raw.githubusercontent.com/stricture/hashstack-server-plugin-oclhashcat/master/scrapers/office2hashcat.py
 sudo gzip -d /usr/share/wordlists/rockyou.txt.gz
 cp /usr/share/windows-resources/binaries/nc.exe .
 cp /usr/share/windows-resources/mimikatz/x64/mimikatz.exe .
